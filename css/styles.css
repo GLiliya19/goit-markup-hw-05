@@ -599,11 +599,16 @@ img {
     border-radius: 50%;
     border: 1px solid rgba(0, 0, 0, 0.1);
     background-color: #E7E9FC;
+    cursor: pointer;
     display: block;
     margin-left: auto;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.modal-close-icon {
+    border-color: #2E2F42;
 }
 
 .backdrop.is-hidden .modal {
