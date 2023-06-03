@@ -117,6 +117,7 @@ img {
 .header-cnt {
     display: flex;
     justify-content: space-between;
+    padding: 24px 0;
 }
 
 .header-nav {
@@ -136,9 +137,32 @@ img {
     letter-spacing: 0.02em;
     color: var(--title-color);
     padding: 24px 0;
+    position: relative;
 }
 
-.header-link:is(:hover, :focus) {
+.header-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    border-radius: 2px;
+    transform: scaleX(0);
+    width: 100%;
+    height: 4px;
+    background-color: #404BBF;
+    transition: transform 250ms linear;
+    transform-origin: right;
+}
+
+.header-link:hover::after,
+.header-link:focus::after,
+.header-link.current::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.header-link:is(:hover, :focus),
+.header-link.current {
     color: #404BBF;
 }
 
@@ -152,15 +176,14 @@ img {
     gap: 40px;
 }
 
-.header-address-item {
-    padding: 24px 0;
-}
+.header-address-item {}
 
 .header-address-link {
     font-size: 16px;
     line-height: var(--typical-lh);
     letter-spacing: 0.02em;
     color: #434455;
+    padding: 24px 0;
 }
 
 .header-address-link:is(:hover, :focus) {
@@ -231,8 +254,6 @@ img {
     clip: rect(0 0 0 0);
     overflow: hidden;
 }
-
-.benefitst-title {}
 
 .benefits-list {
     display: flex;
@@ -416,7 +437,7 @@ img {
     color: #4D5AE5;
     border: 1px solid #E7E9FC;
     border-radius: 4px;
-    padding: 12px 24px
+    padding: 12px 24px;
 }
 
 .portfolio-btn:is(:hover, :focus) {
@@ -433,9 +454,8 @@ img {
     row-gap: 48px;
 }
 
-.example-item {
-    /* flex-basis: calc((100% - 2 * 24px) / 3); */
-
+.example-item:hover .hidden-text {
+    transform: translateY(0);
 }
 
 .card-text {
@@ -451,6 +471,24 @@ img {
 .example-link:hover,
 .example-link:focus {
     box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08), 0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
+}
+
+.example-content {
+    position: relative;
+    overflow: hidden;
+}
+
+.hidden-text {
+    position: absolute;
+    top: 0;
+    color: var(--icons-color);
+    font-size: 16px;
+    line-height: var(--typical-lh);
+    padding: 40px 32px;
+    background-color: #4D5AE5;
+    height: 100%;
+    transform: translateY(100%);
+    transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .example-img {}
@@ -511,7 +549,7 @@ img {
 .soc-title {
     font-weight: 500;
     font-size: 16px;
-    line-height: 1.5;
+    line-height: var(--typical-lh);
     letter-spacing: 0.02em;
     color: #FFFFFF;
     margin-bottom: 16px;
@@ -531,4 +569,49 @@ img {
 .footer-soc-link:hover,
 .footer-soc-link:focus {
     background-color: #31D0AA;
+}
+
+.backdrop {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(46, 47, 66, 0.4);
+    top: 0;
+    transition: opacity 300ms linear, visibility 300ms linear;
+}
+
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    width: 480px;
+    min-height: 584px;
+    background-color: #FCFCFC;
+    border-radius: 4px;
+    padding: 24px;
+}
+
+.modal-close {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: #E7E9FC;
+    display: block;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.backdrop.is-hidden .modal {
+    transform: translate(-50%, -50%) scaleY(0);
+}
+
+.is-hidden {
+    visibility: none;
+    opacity: 0;
+    pointer-events: none;
 }
