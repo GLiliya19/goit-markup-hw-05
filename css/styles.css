@@ -456,9 +456,7 @@ img {
     gap: 24px;
 }
 
-.portfolio-item {
-    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1), background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), border-color 250ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
+.portfolio-item {}
 
 .portfolio-btn {
     background-color: #F4F4FD;
@@ -466,6 +464,7 @@ img {
     border: 1px solid #E7E9FC;
     border-radius: 4px;
     padding: 12px 24px;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1), background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), border-color 250ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .portfolio-btn:is(:hover, :focus) {
@@ -484,8 +483,8 @@ img {
 
 .example-item {}
 
-.example-item:hover.hidden-text,
-.example-item:focus.hidden-text {
+.example-link:hover .hidden-text,
+.example-link:focus .hidden-text {
     transform: translateY(0);
 }
 
