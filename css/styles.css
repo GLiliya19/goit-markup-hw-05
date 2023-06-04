@@ -130,7 +130,7 @@ img {
 }
 
 .header-link {
-    position: relative;
+    /* position: relative; */
     font-weight: 500;
     font-size: 16px;
     line-height: var(--typical-lh);
@@ -181,7 +181,6 @@ img {
 }
 
 .header-address-link {
-    position: relative;
     font-size: 16px;
     line-height: var(--typical-lh);
     letter-spacing: 0.02em;
